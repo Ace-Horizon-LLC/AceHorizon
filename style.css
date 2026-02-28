@@ -1,0 +1,164 @@
+:root {
+  --bg:#020617;
+  --surface:rgba(15,23,42,.8);
+  --neon:#00f6ff;
+  --pink:#ff2bd1;
+  --text:#f8fafc;
+  --muted:#94a3b8;
+  --border:rgba(255,255,255,.05);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Space Grotesk',sans-serif;
+  overflow-x:hidden;
+}
+
+/* Animated background glow */
+body::before{
+  content:"";
+  position:fixed;
+  inset:-200px;
+  background:
+  radial-gradient(circle at 20% 30%, rgba(0,246,255,.15), transparent 40%),
+  radial-gradient(circle at 80% 70%, rgba(255,43,209,.15), transparent 40%);
+  animation:moveBg 15s linear infinite alternate;
+  z-index:-1;
+}
+@keyframes moveBg{
+  to{transform:translateY(-60px)}
+}
+
+/* Scroll bar */
+#progress{
+  position:fixed;
+  top:0;left:0;height:3px;
+  background:linear-gradient(to right,var(--neon),var(--pink));
+  width:0%;
+  z-index:9999;
+}
+
+/* Header */
+header{
+  padding:1.5rem 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  backdrop-filter:blur(12px);
+  background:var(--surface);
+  border-bottom:1px solid var(--border);
+}
+
+.logo{
+  font-family:Orbitron;
+  font-weight:900;
+  letter-spacing:3px;
+  color:var(--neon);
+}
+
+button{
+  cursor:pointer;
+  background:var(--neon);
+  border:none;
+  border-radius:10px;
+  padding:10px 16px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-family:'JetBrains Mono';
+}
+
+button:hover{
+  background:var(--pink);
+}
+
+/* Hero */
+.hero{
+  padding:6rem 6%;
+  text-align:center;
+  animation:fadeUp 1s ease forwards;
+}
+
+.hero h1{
+  font-family:Orbitron;
+  font-size:clamp(2.5rem,8vw,4rem);
+}
+
+.gradient{
+  background:linear-gradient(to right,var(--neon),var(--pink));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.typing{
+  margin-top:1rem;
+  font-family:'JetBrains Mono';
+  color:var(--muted);
+}
+
+/* Repo cards */
+.repos{
+  padding:4rem 6%;
+}
+#repoGrid{
+  display:grid;
+  gap:1.5rem;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+
+.repo-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:1.5rem;
+  transition:.3s;
+  transform:translateY(20px);
+  opacity:0;
+}
+.repo-card.show{
+  transform:translateY(0);
+  opacity:1;
+}
+.repo-card:hover{
+  border-color:var(--neon);
+  transform:translateY(-6px);
+}
+
+/* Contact */
+.contact{
+  padding:4rem 6%;
+  max-width:600px;
+  margin:auto;
+}
+
+input,textarea{
+  width:100%;
+  padding:12px;
+  margin-bottom:1rem;
+  background:transparent;
+  border:1px solid var(--border);
+  border-radius:10px;
+  color:var(--text);
+}
+
+#formStatus{
+  margin-top:1rem;
+  font-family:'JetBrains Mono';
+  color:var(--muted);
+}
+
+/* Footer */
+footer{
+  padding:3rem 6%;
+  text-align:center;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(30px)}
+  to{opacity:1;transform:translateY(0)}
+}
