@@ -118,25 +118,47 @@ header{
   flex-wrap:wrap;
 }
 
-.glass-btn{
-  padding:10px 16px;
-  border-radius:12px;
+/* ======================
+   PREMIUM BUTTONS
+====================== */
+
+.premium-btn{
+  padding:12px 22px;
+  border-radius:14px;
+  font-weight:500;
+  font-size:0.95rem;
   text-decoration:none;
-  color:var(--text);
-  display:flex;
-  gap:8px;
+  display:inline-flex;
   align-items:center;
+  gap:8px;
   cursor:pointer;
-  border:1px solid var(--border);
-  backdrop-filter:blur(15px);
+  transition:all .3s ease;
+  backdrop-filter:blur(20px);
 }
 
-/* Gradient support button */
-.support-btn{
-  background:linear-gradient(to right,var(--neon),var(--pink));
+/* Gradient primary */
+.primary-btn{
+  background:linear-gradient(135deg,var(--neon),var(--pink));
   color:#000;
-  font-weight:700;
   border:none;
+  font-weight:600;
+}
+
+.primary-btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 30px rgba(0,246,255,.3);
+}
+
+/* Outline minimal */
+.outline-btn{
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.15);
+  color:var(--text);
+}
+
+.outline-btn:hover{
+  border-color:var(--neon);
+  transform:translateY(-3px);
 }
 
 /* ======================
@@ -240,3 +262,4 @@ footer{
 .repo-skeleton{
   height:140px;
 }
+
