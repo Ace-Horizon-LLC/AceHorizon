@@ -118,6 +118,29 @@ header{
   flex-wrap:wrap;
 }
 
+/* Avatar Skeleton */
+.avatar-skeleton{
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:rgba(255,255,255,0.07);
+  overflow:hidden;
+}
+
+.avatar-skeleton::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.2),
+    transparent
+  );
+  transform:translateX(-100%);
+  animation:shimmer 1.2s infinite;
+}
+
 /* ======================
    PREMIUM BUTTONS
 ====================== */
@@ -262,4 +285,5 @@ footer{
 .repo-skeleton{
   height:140px;
 }
+
 
