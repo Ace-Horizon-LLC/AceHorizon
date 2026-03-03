@@ -4,18 +4,30 @@ lucide.createIcons();
 const themeToggle = document.getElementById("themeToggle");
 const htmlElement = document.documentElement;
 
-// 1. Unified Theme Logic
-const currentTheme = localStorage.getItem("theme") || "dark";
-htmlElement.setAttribute("data-theme", currentTheme);
-updateThemeIcon(currentTheme);
+// THEME SYSTEM
+const themeToggle = document.getElementById("themeToggle");
+const htmlElement = document.documentElement;
+
+const savedTheme = localStorage.getItem("theme") || "dark";
+htmlElement.setAttribute("data-theme", savedTheme);
+updateThemeIcon(savedTheme);
 
 themeToggle.addEventListener("click", () => {
-    const newTheme = htmlElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+    const current = htmlElement.getAttribute("data-theme");
+    const newTheme = current === "dark" ? "light" : "dark";
     
     htmlElement.setAttribute("data-theme", newTheme);
     localStorage.setItem("theme", newTheme);
     updateThemeIcon(newTheme);
 });
+
+function updateThemeIcon(theme){
+    themeToggle.innerHTML =
+        theme === "dark"
+        ? '<i data-lucide="sun"></i>'
+        : '<i data-lucide="moon"></i>';
+    lucide.createIcons();
+}
 
 function updateThemeIcon(theme) {
     themeToggle.innerHTML = theme === "dark" 
@@ -112,4 +124,5 @@ document.getElementById("contactForm").addEventListener("submit", async e => {
         status.textContent = "Error sending message.";
     }
 });
+
 
