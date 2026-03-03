@@ -47,12 +47,24 @@ function type() {
 }
 type();
 
-// 4. GitHub Avatar
+/* Avatar with proper skeleton */
 fetch("https://api.github.com/users/aceyash-dev")
-    .then(res => res.json())
-    .then(data => {
-        if (data.avatar_url) document.getElementById("pfp").src = data.avatar_url;
-    });
+  .then(res => res.json())
+  .then(data => {
+
+    const img = document.getElementById("pfp");
+    const skeleton = document.getElementById("pfpSkeleton");
+
+    img.src = data.avatar_url;
+
+    img.onload = () => {
+      skeleton.style.opacity = "0";
+      setTimeout(()=>{
+        skeleton.remove();
+        img.style.display = "block";
+      },300);
+    };
+  });
 
 // 5. Repos Display Fix
 fetch("https://api.github.com/users/aceyash-dev/repos?sort=updated")
@@ -100,3 +112,4 @@ document.getElementById("contactForm").addEventListener("submit", async e => {
         status.textContent = "Error sending message.";
     }
 });
+
