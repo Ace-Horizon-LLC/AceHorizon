@@ -16,38 +16,39 @@
   <source src="https://assets.mixkit.co/active_storage/sfx/2568/2568-preview.mp3" type="audio/mpeg">
 </audio>
 
-<div id="progress"></div>
-
 <header class="glass">
   <div class="logo">ACE HORIZON</div>
-  <button id="themeToggle" class="glass-btn">
+  <button id="themeToggle" class="premium-btn outline-btn">
     <i data-lucide="moon"></i>
   </button>
 </header>
 
 <section class="hero">
   <div class="pfp-wrapper glass-card">
-    <img id="pfp" alt="Profile">
+    <div id="pfpSkeleton" class="avatar-skeleton"></div>
+    <img id="pfp" alt="Profile" style="display:none;">
   </div>
+
   <h1>VIBE <span class="gradient">DEVELOPER</span></h1>
   <p class="typing" id="typing"></p>
 
   <div class="hero-buttons">
-   <a href="https://chai4.me/aceyash-dev" target="_blank" class="premium-btn primary-btn">
-  <i data-lucide="coffee"></i> Support
+    <a href="https://chai4.me/aceyash-dev" target="_blank" class="premium-btn primary-btn">
+      <i data-lucide="coffee"></i> Support
     </a>
-    <a href="https://instagram.com/archives.of.yash" target="_blank" class="glass-btn">
-      <i data-lucide="instagram"></i> Instagram
+
+    <a href="https://instagram.com/archives.of.yash" target="_blank" class="premium-btn outline-btn">
+      <i data-lucide="instagram"></i> @archives.of.yash
     </a>
   </div>
 </section>
 
 <section class="about">
-  <div class="glass-card reveal">
+  <div class="glass-card">
     <h2>About</h2>
     <p>
-      Vibe Developer from Varanasi.  
-      Chill Guy.  
+      Vibe Developer from Varanasi.<br>
+      Chill Guy.<br>
       I build clean, optimized digital systems with minimal hardware and maximum control.
     </p>
   </div>
@@ -64,7 +65,7 @@
     <form id="contactForm">
       <input type="text" name="name" placeholder="Your Name" required>
       <textarea name="message" rows="4" placeholder="Message" required></textarea>
-      <button type="submit" class="support-btn">
+      <button type="submit" class="premium-btn primary-btn">
         <i data-lucide="send"></i> Send
       </button>
     </form>
@@ -78,6 +79,4 @@
 
 <script src="script.js"></script>
 </body>
-
 </html>
-
