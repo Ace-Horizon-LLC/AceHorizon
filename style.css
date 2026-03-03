@@ -1,3 +1,45 @@
+/* ======================
+   SMOOTH PAGE LOAD
+====================== */
+
+body{
+  opacity:0;
+  animation:fadeIn .8s ease forwards;
+}
+
+@keyframes fadeIn{
+  to{
+    opacity:1;
+  }
+}
+
+/* ======================
+   THEME VARIABLES
+====================== */
+
+/* Dark (default) */
+:root,
+[data-theme="dark"]{
+  --glass: rgba(255,255,255,.05);
+  --border: rgba(255,255,255,.12);
+  --text: #ffffff;
+  --muted:#cbd5e1;
+  --bg1:#020617;
+  --bg2:#0f172a;
+  --bg3:#1e293b;
+}
+
+/* Light Theme */
+[data-theme="light"]{
+  --glass: rgba(255,255,255,.6);
+  --border: rgba(0,0,0,.08);
+  --text:#111827;
+  --muted:#475569;
+  --bg1:#eef2ff;
+  --bg2:#e0e7ff;
+  --bg3:#c7d2fe;
+}
+
 :root{
   --glass: rgba(255,255,255,.07);
   --border: rgba(255,255,255,.18);
@@ -17,9 +59,10 @@ body{
   margin:0;
   overflow-x:hidden;
 
-  background:linear-gradient(-45deg,#020617,#0f172a,#1e293b,#020617);
+  background:linear-gradient(-45deg,var(--bg1),var(--bg2),var(--bg3),var(--bg1));
   background-size:400% 400%;
   animation:gradientShift 15s ease infinite;
+  transition:background .4s ease,color .4s ease;
 }
 
 @keyframes gradientShift{
@@ -286,4 +329,33 @@ footer{
   height:140px;
 }
 
+/* ======================
+   BLURPLE SCROLLBAR
+====================== */
+
+::-webkit-scrollbar{
+  width:10px;
+}
+
+::-webkit-scrollbar-track{
+  background:transparent;
+}
+
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,#6366f1,#8b5cf6);
+  border-radius:20px;
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background:linear-gradient(180deg,#818cf8,#a78bfa);
+}
+
+/* ======================
+   SELECTION
+====================== */
+
+::selection{
+  background:#8b5cf6;
+  color:#fff;
+}
 
