@@ -1,0 +1,261 @@
+/* ======================
+   SMOOTH PAGE LOAD
+====================== */
+body {
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* ======================
+   THEME VARIABLES
+====================== */
+
+/* Dark Theme (Default) */
+:root,
+[data-theme="dark"] {
+  --glass: rgba(255, 255, 255, 0.05);
+  --border: rgba(255, 255, 255, 0.12);
+  --text: #ffffff;
+  --muted: #cbd5e1;
+  --bg1: #020617;
+  --bg2: #0f172a;
+  --bg3: #1e293b;
+  --neon: #00f6ff;
+  --pink: #ff2bd1;
+}
+
+/* Light Theme */
+[data-theme="light"] {
+  --glass: rgba(255, 255, 255, 0.6);
+  --border: rgba(0, 0, 0, 0.08);
+  --text: #111827;
+  --muted: #475569;
+  --bg1: #eef2ff;
+  --bg2: #e0e7ff;
+  --bg3: #c7d2fe;
+  --neon: #0062ff; /* Deeper blue for readability */
+  --pink: #d90082;
+}
+
+/* ======================
+   BODY & BACKGROUND
+====================== */
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  color: var(--text);
+  margin: 0;
+  overflow-x: hidden;
+  background: linear-gradient(-45deg, var(--bg1), var(--bg2), var(--bg3), var(--bg1));
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* ======================
+   GLASS SYSTEM
+====================== */
+.glass {
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  background: var(--glass);
+  border-bottom: 1px solid var(--border);
+}
+
+.glass-card {
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  background: var(--glass);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2rem;
+  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.glass-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--neon);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* ======================
+   HEADER
+====================== */
+header {
+  padding: 1.2rem 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: var(--neon);
+  text-transform: uppercase;
+}
+
+/* ======================
+   HERO SECTION
+====================== */
+.hero {
+  text-align: center;
+  padding: 5rem 6%;
+}
+
+.pfp-wrapper {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 2rem;
+  border-radius: 50%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#pfp {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--neon);
+  display: none; /* Controlled by JS */
+}
+
+.gradient {
+  background: linear-gradient(to right, var(--neon), var(--pink));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.typing {
+  margin-top: 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  color: var(--muted);
+  min-height: 1.5em;
+}
+
+/* ======================
+   BUTTONS
+====================== */
+.premium-btn {
+  padding: 12px 22px;
+  border-radius: 14px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.primary-btn {
+  background: linear-gradient(135deg, var(--neon), var(--pink));
+  color: #000;
+}
+
+.primary-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 246, 255, 0.4);
+}
+
+.outline-btn {
+  background: var(--glass);
+  border: 1px solid var(--border);
+  color: var(--text);
+}
+
+.outline-btn:hover {
+  border-color: var(--neon);
+  color: var(--neon);
+  transform: translateY(-3px);
+}
+
+/* ======================
+   REPO GRID
+====================== */
+#repoGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  padding: 2rem 0;
+}
+
+.repo-card {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ======================
+   FORM ELEMENTS
+====================== */
+input, textarea {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--text);
+  font-family: inherit;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: var(--neon);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* ======================
+   SKELETONS
+====================== */
+.avatar-skeleton {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--glass);
+  overflow: hidden;
+}
+
+.avatar-skeleton::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  transform: translateX(-100%);
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  100% { transform: translateX(100%); }
+}
+
+/* ======================
+   SCROLLBAR
+====================== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg1); }
+::-webkit-scrollbar-thumb { 
+  background: linear-gradient(var(--neon), var(--pink)); 
+  border-radius: 10px; 
+}
